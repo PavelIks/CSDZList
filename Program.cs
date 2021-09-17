@@ -7,15 +7,15 @@ namespace dzshka
     {
         static void Main(string[] args)
         {
-            string txt = "";
-            while (txt != "СТОП")
+            string str_txt = "";
+            while (str_txt != "СТОП")
             {
                 Console.Write("Введите слово: ");
-                txt = Console.ReadLine();
+                str_txt = Console.ReadLine();
             }
-            List<C_Text> c_text1 = new List<C_Text>();
-            c_text1.Add(new C_Text() { text = txt });
-            foreach (C_Text t in c_text1)
+            List<C_Text> list_txt = new List<C_Text>();
+            list_txt.Add(new C_Text(){ text = str_txt });
+            foreach (C_Text t in list_txt)
             {
                 Console.WriteLine(t.text);
             }
@@ -33,9 +33,5 @@ namespace dzshka
             text = text_;
         }
         public string text;
-        public int CompareTo(C_Text text)
-        {
-            return this.text.CompareTo(text.text);
-        }
     }
 }
