@@ -12,20 +12,30 @@ namespace dzshka
             {
                 Console.Write("Введите слово: ");
                 txt = Console.ReadLine();
-            } 
-
-            List<C_Text> c_text1 = new List<C_Text>() { };
-            c_text1.Add(new C_Text() { Text = txt });
-
+            }
+            List<C_Text> c_text1 = new List<C_Text>();
+            c_text1.Add(new C_Text() { text = txt });
             foreach (C_Text t in c_text1)
             {
-                Console.WriteLine(t.Text);
+                Console.WriteLine(t.text);
             }
         }
     }
 
     class C_Text
     {
-        public string Text { get; set; }
+        public C_Text()
+        {
+
+        }
+        public C_Text(string text_)
+        {
+            text = text_;
+        }
+        public string text;
+        public int CompareTo(C_Text text)
+        {
+            return this.text.CompareTo(text.text);
+        }
     }
 }
