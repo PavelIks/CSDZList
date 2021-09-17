@@ -5,20 +5,30 @@ namespace dzshka
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            string str_txt = "";
-            while (str_txt != "СТОП")
+            List<string> list = new List<string>();
+
+            string str = String.Empty;
+            while (!list.Contains("СТОП"))
             {
-                Console.Write("Введите слово: ");
-                str_txt = Console.ReadLine();
+                //list.Add(Console.ReadLine());
+                list.Add(Console.ReadLine());
             }
-            List<C_Text> list_txt = new List<C_Text>();
-            list_txt.Add(new C_Text(){ text = str_txt });
-            foreach (C_Text t in list_txt)
+            list.RemoveAt(list.Count - 1);
+            string min = list[0], max = list[0];
+            foreach (var item in list)
             {
-                Console.WriteLine(t.text);
+                if (min.Length > item.Length)
+                {
+                    min = item;
+                }
+                if (max.Length < item.Length)
+                {
+                    max = item;
+                }
             }
+            Console.WriteLine($"Самое длинное слово - {max}, самое короткое - {min}");
         }
     }
 
