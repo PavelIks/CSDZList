@@ -7,20 +7,24 @@ namespace dzshka
     {
         static void Main(string[] args)
         {
-            Console.Write("Введите слово: ");
-            string txt = Console.ReadLine();
-
-            List<Person> people = new List<Person>() { };
-            people.Add(new Person() { Text = txt });
-
-            foreach (Person p in people)
+            string txt = "";
+            while (txt != "СТОП")
             {
-                Console.WriteLine(p.Text);
+                Console.Write("Введите слово: ");
+                txt = Console.ReadLine();
+            } 
+
+            List<C_Text> c_text1 = new List<C_Text>() { };
+            c_text1.Add(new C_Text() { Text = txt });
+
+            foreach (C_Text t in c_text1)
+            {
+                Console.WriteLine(t.Text);
             }
         }
     }
 
-    class Person
+    class C_Text
     {
         public string Text { get; set; }
     }
