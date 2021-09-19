@@ -5,43 +5,54 @@ namespace dzshka
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            List<string> list = new List<string>();
+            string str_txt = string.Empty;
+            List<TextClass> textClasses = new();
 
-            string str = String.Empty;
-            while (!list.Contains("СТОП"))
+            while (str_txt.ToUpper() != "СТОП") // стоп будет равно СТОП, Стоп, СтОп.....
             {
-                //list.Add(Console.ReadLine());
-                list.Add(Console.ReadLine());
+                Console.Write("Введите слово: ");
+                str_txt = Console.ReadLine();
+
+                // не добавляем пустые строки и строку стоп
+                if (string.IsNullOrWhiteSpace(str_txt) || str_txt.ToUpper() == "СТОП")
+                {
+                    continue;
+                }
+                textClasses.Add(new TextClass(str_txt));
             }
-            list.RemoveAt(list.Count - 1);
-            string min = list[0], max = list[0];
-            foreach (var item in list)
+
+            if (textClasses.Count == 0)  // можно использовать !textClasses.Any()
             {
-                if (min.Length > item.Length)
+                Console.WriteLine($"список пуст");
+                return;
+            }
+
+            string min = textClasses[0].Text, max = textClasses[0].Text;
+            foreach (var item in textClasses)
+            {
+                if (min.Length > item.Text.Length)
                 {
-                    min = item;
+                    min = item.Text;
                 }
-                if (max.Length < item.Length)
+                if (max.Length < item.Text.Length)
                 {
-                    max = item;
+                    max = item.Text;
                 }
             }
-            Console.WriteLine($"Самое длинное слово - {max}, самое короткое - {min}");
+
+            Console.WriteLine($"Самое длинное слово - {max}\nСамое короткое слово - {min}\n");
         }
     }
 
-    class C_Text
+    class TextClass
     {
-        public C_Text()
+        public TextClass(string text)
         {
+            Text = text;
+        }
 
-        }
-        public C_Text(string text_)
-        {
-            text = text_;
-        }
-        public string text;
+        public string Text { get; }
     }
 }
