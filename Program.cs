@@ -10,13 +10,13 @@ namespace dzshka
             string str_txt = string.Empty;
             List<C_Text> list_txt = new();
 
-            while (str_txt.ToUpper() != "СТОП") // стоп будет равно СТОП, Стоп, СтОп.....
+            while (str_txt != "СТОП")
             {
                 Console.Write("Введите слово: ");
                 str_txt = Console.ReadLine();
 
                 // не добавляем пустые строки и строку стоп
-                if (string.IsNullOrWhiteSpace(str_txt) || str_txt.ToUpper() == "СТОП")
+                if (string.IsNullOrWhiteSpace(str_txt) || str_txt == "СТОП")
                 {
                     continue;
                 }
@@ -42,7 +42,7 @@ namespace dzshka
                 }
             }
 
-            Console.WriteLine($"Самое длинное слово - {max}.\nСамое короткое слово - {min}.\n");
+            Console.WriteLine($"\nСамое длинное слово\t-\t{max}\nСамое короткое слово\t-\t{min}\n");
         }
     }
 
