@@ -8,7 +8,7 @@ namespace dzshka
         static void Main(string[] args)
         {
             string str_txt = string.Empty;
-            List<TextClass> textClasses = new();
+            List<C_Text> list_txt = new();
 
             while (str_txt.ToUpper() != "СТОП") // стоп будет равно СТОП, Стоп, СтОп.....
             {
@@ -20,17 +20,17 @@ namespace dzshka
                 {
                     continue;
                 }
-                textClasses.Add(new TextClass(str_txt));
+                list_txt.Add(new C_Text(str_txt));
             }
 
-            if (textClasses.Count == 0)  // можно использовать !textClasses.Any()
+            if (list_txt.Count == 0)  // можно использовать !list_txt.Any()
             {
-                Console.WriteLine($"список пуст");
+                Console.WriteLine($"Список пуст.");
                 return;
             }
 
-            string min = textClasses[0].Text, max = textClasses[0].Text;
-            foreach (var item in textClasses)
+            string min = list_txt[0].Text, max = list_txt[0].Text;
+            foreach (var item in list_txt)
             {
                 if (min.Length > item.Text.Length)
                 {
@@ -42,13 +42,13 @@ namespace dzshka
                 }
             }
 
-            Console.WriteLine($"Самое длинное слово - {max}\nСамое короткое слово - {min}\n");
+            Console.WriteLine($"Самое длинное слово - {max}.\nСамое короткое слово - {min}.\n");
         }
     }
 
-    class TextClass
+    class C_Text
     {
-        public TextClass(string text)
+        public C_Text(string text)
         {
             Text = text;
         }
